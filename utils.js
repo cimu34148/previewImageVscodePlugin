@@ -56,7 +56,7 @@ function isShowHover(word, uri, character) {
 
 module.exports = {
   getWord,
-  getUrl,
+  getUri,
   splitUri,
   isShowHover
 }
