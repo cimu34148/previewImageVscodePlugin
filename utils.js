@@ -1,3 +1,6 @@
+const reg = /\.(png|jpg|jpeg|gif|svg|bmp|ico|webp)/
+
+
 function getWord(document, line) {
 	const lineText = document.lineAt(line)
 	const word = lineText.text
@@ -8,7 +11,6 @@ function getWord(document, line) {
 function getUri(word) {
   if(!word) return;
 
-  const reg = /\.(png|jpg|jpeg|gif|svg|bmp|ico|webp)/
   let uri = word.split(' ').filter(text => {
     if(reg.test(text)) {
       return text
@@ -33,7 +35,7 @@ function splitUri(uri) {
 
   if(prefixPos && prefixPos > -1) {
     let result = uri.slice(prefixPos)
-    const dotReg = /('|"|,|\)|;|\})$/
+    const dotReg = /('|"|,|\)|;|\}|`)$/
     while(dotReg.test(result)) {
       result = result.replace(dotReg, '')
     }
