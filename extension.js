@@ -10,11 +10,12 @@ function activate(context) {
 
 	let disposable = vscode.languages.registerHoverProvider(['*'], {
 		provideHover(document, position) {
-			const word = utils.getWord(document, position)
+			const { line, character } = position
+			const word = utils.getWord(document, line)
 			const uri = utils.getUri(word)
 			if(!uri) return
 
-			if(utils.isShowHover(word, uri, position.character)) {
+			if(utils.isShowHover(word, uri, character)) {
 				return new vscode.Hover(`![${uri}](${uri})`)
 			}
 		}

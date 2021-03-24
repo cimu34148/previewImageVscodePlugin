@@ -1,5 +1,4 @@
-function getWord(document, position) {
-  const line = position.line
+function getWord(document, line) {
 	const lineText = document.lineAt(line)
 	const word = lineText.text
 
