@@ -12,7 +12,7 @@ const path = require("path");
 /**@type {import('webpack').Configuration}*/
 const config = {
   target: "node", // vscode插件运行在Node.js环境中 📖 -> https://webpack.js.org/configuration/node/
-
+  mode: "production",
   entry: "./extension.js", // 插件的入口文件 📖 -> https://webpack.js.org/configuration/entry-context/
   output: {
     // 打包好的文件储存在'dist'文件夹中 (请参考package.json), 📖 -> https://webpack.js.org/configuration/output/
