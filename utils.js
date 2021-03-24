@@ -6,7 +6,7 @@ function getWord(document, position) {
   return word
 }
 
-function getUrl(word) {
+function getUri(word) {
   if(!word) return;
 
   const reg = /\.(png|jpg|jpeg|gif|svg|bmp|ico|webp)/

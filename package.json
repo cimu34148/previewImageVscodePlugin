@@ -39,7 +39,5 @@
     "webpack": "^5.27.2",
     "webpack-cli": "^4.5.0"
   },
-  "dependencies": {
-    "slash": "^3.0.0"
-  }
+  "dependencies": {}
 }
