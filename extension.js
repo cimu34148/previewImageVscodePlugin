@@ -16,11 +16,18 @@ function activate(context) {
 					return text
 				}
 			}).map(item => {
-				const httpPos = item.indexOf('http://')
-				const httpsPos = httpPos > -1 ? httpPos : item.indexOf('https://')
-				if(httpsPos > -1) {
-					let result = item.slice(httpsPos)
-					const dotReg = /('|"|,)$/
+				const prefix = ['http', 'https']
+				let prefixPos = ''
+				for(let i = 0;i < prefix.length;i++) {
+					prefixPos = item.indexOf(prefix[i])
+					if(prefixPos > -1) {
+						break
+					}
+				}
+
+				if(prefixPos && prefixPos > -1) {
+					let result = item.slice(prefixPos)
+					const dotReg = /('|"|,|\)|;)$/
 					while(dotReg.test(result)) {
 						result = result.replace(dotReg, '')
 					}
@@ -28,9 +35,8 @@ function activate(context) {
 				}
 			})
 			
-			console.log(imgUrl)
-			if(imgUrl) {
-				return new vscode.Hover(`![](${imgUrl})`)
+			if(imgUrl && imgUrl.length) {
+				return new vscode.Hover(`![](${imgUrl[0]})`)
 			}
 
 		}
